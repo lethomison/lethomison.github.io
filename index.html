@@ -1,10 +1,415 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Thomison Le</title>
-	</head> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomison Le | Portfolio</title>
+    <style>
+        /* CSS Variables for Dark Minimalist Theme */
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-	<body>
-		<h1>My name is Thomison.</h1>
-	</body>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--surface-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            padding: 6rem 0;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        #hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Cards for Experience & Projects */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-subtitle {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .card-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+
+        .card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--surface-color);
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .nav-links { display: none; /* In a full build, add a hamburger menu here */ }
+            .card-header { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div style="font-weight: 700; font-size: 1.2rem; letter-spacing: 1px;">TL.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="Thomison_Le_Resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Resume PDF</a>
+            </div>
+        </nav>
+
+        <section id="hero">
+            <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">Hi, my name is</p>
+            <h1>Thomison Le. <br><span>I engineer robotic solutions.</span></h1>
+            <p class="hero-subtitle">
+                I am a Mechanical Engineering student at UC Berkeley specializing in robotics, control systems, and data-driven manufacturing.
+            </p>
+            <div class="social-links">
+                <a href="mailto:thomison_le@berkeley.edu" class="btn btn-primary">Get In Touch</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn btn-outline">LinkedIn</a>
+                <a href="https://github.com/yourusername" target="_blank" class="btn btn-outline">GitHub</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div style="max-width: 800px;">
+                <p>
+                    I'm currently pursuing my B.S. in Mechanical Engineering at the University of California, Berkeley (Expected May 2029). My passion lies at the intersection of hardware fabrication and intelligent software control. From diagnosing MCU-PC failures on $50k+ robots to machining flight-critical rocket components, I love getting my hands dirty to solve complex physical problems.
+                </p>
+                <p>
+                    Beyond the lab and the machine shop, I am deeply committed to community impact and youth advocacy. Whether I'm mentoring kindergarteners in aerodynamics through Berkeley Engineers and Mentors, or prototyping tools for underprivileged students, I believe technology should always empower people.
+                </p>
+                
+                <div class="skills-container">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">CAD / Altium</span>
+                    <span class="skill-tag">OMAX Waterjet</span>
+                    <span class="skill-tag">CNC Machining</span>
+                    <span class="skill-tag">ROS</span>
+                    <span class="skill-tag">Data Science</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="card-grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Undergraduate Research Assistant</h3>
+                            <div class="card-subtitle">Model Predictive Control Lab | Berkeley</div>
+                        </div>
+                        <div class="card-date">May 2026 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Diagnosed MCU-PC failure on a $50k+ Ridgeback robot; replaced CMOS battery and configured BIOS to restore use.</li>
+                        <li>Validating asymmetric control algorithms for human-robot navigation across 200+ Monte-Carlo simulations.</li>
+                        <li>Building Rust & ROS pipelines to deploy 2D dynamic game models for safe, cooperative human-robot transport.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Avionics & Manufacturing Team Member</h3>
+                            <div class="card-subtitle">Space Enterprise at Berkeley</div>
+                        </div>
+                        <div class="card-date">Sep 2025 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Engineered a Python telemetry pipeline to synchronize 100Hz multi-sensor flight logs, applying numerical double integration to IMU acceleration data.</li>
+                        <li>Implemented quaternion math to translate IMU data into a world frame from a fixed body frame.</li>
+                        <li>Fabricated flight-critical avionics assemblies using precision wire harnessing, and utilized abrasive waterjet machining for rocket components.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Energy & Data Analysis Intern</h3>
+                            <div class="card-subtitle">The Energy Coalition | San Jose</div>
+                        </div>
+                        <div class="card-date">Jun 2024 - Aug 2024</div>
+                    </div>
+                    <ul>
+                        <li>Developed an interactive ArcGIS StoryMap to visualize local energy/water usage, educating 100+ users.</li>
+                        <li>Conducted energy audits to model consumption rates, projecting utility costs from billing data.</li>
+                        <li>Synthesized datasets to identify inefficient infrastructure, recommending alternatives that resulted in a projected 74% reduction in energy costs.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                
+                <div class="card">
+                    <h3 class="card-title">Autonomous Mobile Robot</h3>
+                    <div class="card-subtitle" style="margin-bottom: 1rem;">Dec 2025 - Present</div>
+                    <p style="font-size: 0.95rem;">
+                        Developed a simulated physics-based testing environment in PyBullet to validate mechanical designs against real-world factors. Implemented a logical A* navigation protocol with specific edge-case recovery behaviors, reducing entrapment by 95%.
+                    </p>
+                    <div class="skills-container" style="margin-top: 1rem;">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PyBullet</span>
+                        <span class="skill-tag">Pathfinding</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">NLP Movie Classifier</h3>
+                    <div class="card-subtitle" style="margin-bottom: 1rem;">April 2026</div>
+                    <p style="font-size: 0.95rem;">
+                        Built a k-Nearest Neighbors NLP model in Pandas to classify movie genres from screenplays. Processed 300+ scripts, extracted optimal word frequency features, and achieved a 70% predictive accuracy using an optimized 85/15 train-test split pipeline.
+                    </p>
+                    <div class="skills-container" style="margin-top: 1rem;">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Thomison Le. Designed & Built for the Web.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Simple fade-in animation for scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
