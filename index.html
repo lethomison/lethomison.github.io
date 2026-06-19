@@ -10,9 +10,9 @@
             --bg-color: #0A1128;
             --surface-color: #162544;
             --text-primary: #F8FAFC;
-            --text-secondary: #94A3B8;
+            --text-secondary: #cbd5e1;
             --accent-color: #00E5FF;
-            --accent-hover: #00B8CC;
+            --accent-hover: #00B8D4;
             --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
@@ -65,7 +65,7 @@
 
         /* Layout Container */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -107,7 +107,6 @@
         .btn-primary {
             background-color: var(--accent-color);
             color: var(--bg-color);
-            font-weight: 600;
         }
 
         .btn-primary:hover {
@@ -125,18 +124,46 @@
             color: var(--bg-color);
         }
 
-        /* Hero Section Layout */
+        /* Hero Section */
         #hero {
             padding: 6rem 0;
             min-height: 70vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
             gap: 4rem;
+            justify-content: space-between;
+            width: 100%;
         }
 
         .hero-text {
             flex: 1;
+        }
+
+        .hero-image {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--surface-color);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.3);
         }
 
         #hero h1 {
@@ -152,37 +179,13 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 550px;
             margin-bottom: 2.5rem;
         }
 
         .social-links {
             display: flex;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        /* Profile Image Styling */
-        .hero-image {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-pic {
-            width: 100%;
-            max-width: 320px;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--surface-color);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.15); /* Tech glow effect */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+            gap: 1.5rem;
         }
 
         /* Sections General */
@@ -201,14 +204,13 @@
             background-color: var(--surface-color);
             padding: 2rem;
             border-radius: 8px;
+            transition: transform 0.3s ease;
             border-left: 3px solid transparent;
-            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             border-left: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
 
         .card-header {
@@ -226,19 +228,18 @@
 
         .card-subtitle {
             color: var(--accent-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .card-date {
             color: var(--text-secondary);
             font-size: 0.85rem;
-            font-family: monospace;
         }
 
         .card ul {
-            list-style-position: outside;
+            list-style-position: inside;
             color: var(--text-secondary);
-            margin-left: 1.2rem;
+            margin-left: 0.5rem;
         }
 
         .card li {
@@ -255,13 +256,12 @@
         }
 
         .skill-tag {
-            background-color: rgba(0, 229, 255, 0.05);
+            background-color: rgba(0, 229, 255, 0.1);
             color: var(--accent-color);
             padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+            border-radius: 20px;
             font-size: 0.85rem;
             border: 1px solid rgba(0, 229, 255, 0.2);
-            font-family: monospace;
         }
 
         /* Footer */
@@ -273,23 +273,14 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 900px) {
-            #hero {
-                flex-direction: column-reverse;
+        @media (max-width: 768px) {
+            .hero-content { 
+                flex-direction: column-reverse; 
                 text-align: center;
                 gap: 2rem;
-                padding: 4rem 0;
             }
-            .social-links {
-                justify-content: center;
-            }
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
+            .hero-subtitle { margin: 0 auto 2.5rem auto; }
+            .social-links { justify-content: center; }
             #hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
             .card-header { flex-direction: column; gap: 0.5rem; }
@@ -300,30 +291,32 @@
 
     <div class="container">
         <nav>
-            <div style="font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; color: var(--text-primary);">TL<span style="color: var(--accent-color);">.</span></div>
+            <div style="font-weight: 700; font-size: 1.2rem; letter-spacing: 1px;">TL.</div>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="Thomison_Le_Resume.pdf" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Resume PDF</a>
+                <a href="Thomison_Le_Resume_6_2026.pdf" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Resume PDF</a>
             </div>
         </nav>
 
         <section id="hero">
-            <div class="hero-text">
-                <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; font-family: monospace;">> System.out.println("Hello, World!");</p>
-                <h1>Thomison Le. <br><span>I engineer robotic solutions.</span></h1>
-                <p class="hero-subtitle">
-                    I am a Mechanical Engineering student at UC Berkeley specializing in robotics, control systems, and data-driven manufacturing.
-                </p>
-                <div class="social-links">
-                    <a href="mailto:thomison_le@berkeley.edu" class="btn btn-primary">Get In Touch</a>
-                    <a href="https://linkedin.com/" target="_blank" class="btn btn-outline">LinkedIn</a>
-                    <a href="https://github.com/" target="_blank" class="btn btn-outline">GitHub</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">Hi, my name is</p>
+                    <h1>Thomison Le.</h1>
+                    <p class="hero-subtitle">
+                        I am a Mechanical Engineering student at UC Berkeley specializing in robotics, control systems, and data-driven manufacturing.
+                    </p>
+                    <div class="social-links">
+                        <a href="mailto:thomison_le@berkeley.edu" class="btn btn-primary">Get In Touch</a>
+                        <a href="https://www.linkedin.com/in/thomison-le/" target="_blank" class="btn btn-outline">LinkedIn</a>
+                        <a href="https://github.com/lethomison" target="_blank" class="btn btn-outline">GitHub</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="Thomison_Le_Headshot.jpg" alt="Thomison Le Headshot" class="profile-pic">
+                <div class="hero-image">
+                    <img src="C:\Users\14088\OneDrive\Desktop\Website\lethomison.github.io\Assets\Professional_Headshot.png" alt="Thomison Le, Mechanical Engineering Student" class="profile-img">
+                </div>
             </div>
         </section>
 
@@ -331,7 +324,7 @@
             <h2>About Me</h2>
             <div style="max-width: 800px;">
                 <p>
-                    I'm currently pursuing my B.S. in Mechanical Engineering at the University of California, Berkeley (Expected May 2029). My passion lies at the intersection of hardware fabrication and intelligent software control. From diagnosing MCU-PC failures on $50k+ robots to machining flight-critical rocket components, I love getting my hands dirty to solve complex physical problems.
+                    I'm currently pursuing my B.S. in Mechanical Engineering at the University of California, Berkeley (Expected May 2029), with an intended minor in Electrical Engineering and Computer Science (EECS). My passion lies at the intersection of hardware fabrication and intelligent software control. From diagnosing MCU-PC failures on $50k+ robots to machining flight-critical rocket components, I love getting my hands dirty to solve complex physical problems.
                 </p>
                 <p>
                     Beyond the lab and the machine shop, I am deeply committed to community impact and youth advocacy. Whether I'm mentoring kindergarteners in aerodynamics through Berkeley Engineers and Mentors, or prototyping tools for underprivileged students, I believe technology should always empower people.
@@ -344,7 +337,6 @@
                     <span class="skill-tag">CAD / Altium</span>
                     <span class="skill-tag">OMAX Waterjet</span>
                     <span class="skill-tag">CNC Machining</span>
-                    <span class="skill-tag">ROS</span>
                     <span class="skill-tag">Data Science</span>
                 </div>
             </div>
@@ -365,7 +357,7 @@
                     <ul>
                         <li>Diagnosed MCU-PC failure on a $50k+ Ridgeback robot; replaced CMOS battery and configured BIOS to restore use.</li>
                         <li>Validating asymmetric control algorithms for human-robot navigation across 200+ Monte-Carlo simulations.</li>
-                        <li>Building Rust & ROS pipelines to deploy 2D dynamic game models for safe, cooperative human-robot transport.</li>
+                        <li>Building ROS pipelines to deploy 2D dynamic game models for safe, cooperative human-robot transport.</li>
                     </ul>
                 </div>
 
